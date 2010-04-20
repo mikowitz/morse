@@ -13,12 +13,17 @@ module Morse
     end
   end
 
+  # @private
   def self.translate_from_to(source, target)
     @string.split(@split).map{|char| target[source.index(char)] }.join(@join)
   end
+  
+  private :translate_from_to
 end
 
+# @private
 class String
+  # @private
   def is_morse?
     self.gsub(/\.|-|\//, "").strip == ""
   end
