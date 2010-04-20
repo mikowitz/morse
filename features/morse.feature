@@ -1,9 +1,24 @@
-Feature: something something
-  In order to something something
-  A user something something
-  something something something
+Feature: Morse code
+  In order to successfully transmit messages
+  A telegraph operator
+  Must be able to understand Morse code
 
-  Scenario: something something
-    Given inspiration
-    When I create a sweet new gem
-    Then everyone should see how awesome I am
+  Scenario Outline: translating english -> morse
+    Given the english <english>
+    When I translate it into Morse code
+    Then I should get the result <morse>
+
+    Examples:
+      | english | morse |
+      | paris   | .--. .- .-. .. ... |
+      | michael berkowitz | -- .. -.-. .... .- . .-.. / -... . .-. -.- --- .-- .. - --.. |
+
+  Scenario Outline: translating morse -> english
+    Given the morse <morse>
+    When I translate it into english
+    Then I should get the english result <english>
+
+    Examples:
+      | morse | english |
+      | .--. .- .-. .. ...| paris |
+      | ... .- ...- . / --- ..- .-. / ... .... .. .--. | save our ship |
